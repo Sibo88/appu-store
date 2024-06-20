@@ -1,0 +1,14 @@
+*{
+    
+    font-family: "Poppins", sans-serif;
+}
+.logo{
+    font-family:  "Arima", system-ui;
+}
+.ban{
+   background-image: url(/pexels-valeriiamiller-2642842.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 250px;
+   
+}
