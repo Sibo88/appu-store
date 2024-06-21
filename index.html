@@ -71,7 +71,7 @@
                     </div>
                     
                     <div class="col-md-6 text-center">
-                        <img src="/pexels-seymorella-1100375572-20769930.jpg" alt="tea shop" class="img-fluid w-100"/>
+                        <img  src="/pexels-seymorella-1100375572-20769930.jpg" alt="tea shop" class="img-fluid w-100"/>
                     </div>
                     
                 </div>
@@ -196,34 +196,90 @@
                   <div class="col-md-6 py-4">
                     <form id="inputForm">
                       <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">name</label>
-                        <input type="text" class="form-control" id="name" >
+                          <label for="name" class="form-label">Name</label>
+                          <input type="text" class="form-control" id="name">
                       </div>
                       <div class="mb-3">
-                        <label for="exampleFormControlInput1 " class="form-label">mobile number</label>
-                        <input type="number" class="form-control " id="mobile" >
-                        
+                          <label for="mobile" class="form-label">Mobile Number</label>
+                          <input type="number" class="form-control" id="mobile">
                       </div>
                       <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="email" placeholder="name@example.com">
+                          <label for="email" class="form-label">Email Address</label>
+                          <input type="email" class="form-control" id="email" placeholder="name@example.com">
                       </div>
                       <div class="mb-3">
-                        <label for="exampleFormControlTextarea1" class="form-label">note for us</label>
-                        <textarea class="form-control" id="note" rows="3"></textarea>
+                          <label for="note" class="form-label">Note for Us</label>
+                          <textarea class="form-control" id="note" rows="3"></textarea>
                       </div>
-
-                    </form>
+                     
+                  </form>
+              
+                  <script>
+                      
+                      function saveData() {
+                          // Get values from form inputs
+                          const name = document.getElementById('name').value;
+                          const mobile = document.getElementById('mobile').value;
+                          const email = document.getElementById('email').value;
+                          const note = document.getElementById('note').value;
+              
+                          // Validate if the inputs are not empty
+                          if (!name || !mobile || !email || !note) {
+                              alert('Please fill in all fields.');
+                              return;
+                          }
+              
+                          // Retrieve existing data from local storage or initialize an empty array
+                          const existingData = JSON.parse(localStorage.getItem('userData')) || [];
+              
+                          // Add new data to the array
+                          existingData.push({ name, mobile, email, note });
+              
+                          // Save updated array back to local storage
+                          localStorage.setItem('userData', JSON.stringify(existingData));
+              
+                          // Clear the form
+                          document.getElementById('inputForm').reset();
+              
+                          // Show alert with all entries
+                          showAlert();
+                      }
+              
+                      // Function to show alert with all data
+                      function showAlert() {
+                          // Get values from local storage
+                          const userData = JSON.parse(localStorage.getItem('userData')) || [];
+              
+                          // Initialize a string to accumulate all data entries
+                          let alertMessage = 'Thanks for your submission\n\n';
+              
+                          // Loop through the data and accumulate each entry
+                          userData.forEach((data, index) => {
+                              alertMessage += `Entry ${index + 1}:\n
+                                               Name: ${data.name}\n
+                                               Mobile: ${data.mobile}\n
+                                               Email: ${data.email}\n
+                                               Note: ${data.note}\n\n`;
+                          });
+              
+                          // Show all entries in an alert box
+                          if (userData.length === 0) {
+                              alert('No data found.');
+                          } else {
+                              alert(alertMessage);
+                          }
+                      }
+                  </script>
+                  
                   
                    
                     <div class="mb-3">
-                      <input class="btn btn-primary" type="submit" value="save" >
+                      <input class="btn btn-primary" type="submit" value="save" onclick="saveData()" >
                     </div>
                   </div>
                   <div id="location" class="col-md-6 py-4 text-white text-center ">
                     <p>our location 📍</p>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d15748.835068046343!2d80.69044920449919!3d9.314761742638936!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2s!5e0!3m2!1sen!2slk!4v1718889977198!5m2!1sen!2slk"   width="600" height="450" style="border: 10px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d31497.772435424744!2d80.69378849371779!3d9.313627138972654!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2s!5e0!3m2!1sen!2slk!4v1718951421262!5m2!1sen!2slk" width="400" height="300"  style="border:0;" allowfullscreen="" loading="fast" referrerpolicy="no-referrer-when-downgrade"></iframe>
                   </div>
 
                 </div>
